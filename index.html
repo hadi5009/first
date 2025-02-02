@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طلب طباعة</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+        h1 {
+            color: #333;
+        }
+        label {
+            font-size: 18px;
+            color: #555;
+        }
+        select, input {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>طلب طباعة</h1>
+        <form action="calculate.php" method="POST">
+            <label for="paper_size">اختر حجم الورق:</label>
+            <select name="paper_size" id="paper_size" required>
+                <option value="A4">A4</option>
+                <option value="A5">A5</option>
+            </select><br>
+            <label for="quantity">عدد الصفحات:</label>
+            <input type="number" name="quantity" id="quantity" min="1" required><br>
+            <button type="submit">احسب السعر</button>
+        </form>
+        <div class="result">
+            <?php
+            if (isset($_GET['total_price'])) {
+                echo "السعر الإجمالي: " . $_GET['total_price'] . " ليرة";
+            }
+            ?>
+        </div>
+    </div>
+</body>
+</html>
